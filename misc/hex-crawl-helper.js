@@ -123,6 +123,10 @@ new Dialog({
         let navigator = Actors.instance.get(canvas.tokens.controlled[0].data.actorId);
         let wis = navigator.data.data.abilities.wis.mod;
         let survival = new Roll(`1d20`).roll().total + wis;
+        let survival2 = new Roll(`1d20`).roll().total + wis;
+        if (weatherRoll.indexOf('Tropical storm') > -1 && survival > survival2) {
+            survival = survival2;
+        }
         let slowPace = new Roll(`1d4`).roll().total;
         let fastPace = new Roll(`1d2`).roll().total;
         let hexesMoved = 1;
